@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -29,7 +28,6 @@ const Connect = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
-    // In a real application, we would send this data to a server
     toast.success('Your message has been sent! We will get back to you soon.');
     setFormData({
       name: '',
@@ -168,9 +166,9 @@ const Connect = () => {
                     <div>
                       <h3 className="text-lg font-bold text-gray-800 mb-1">Visit Us</h3>
                       <p className="text-gray-600">
-                        Altimus Building,<br />
-                        Ahmedabad, Gujarat 380015,<br />
-                        India
+                        804, 8th Floor, Manjeera Trinity Corporate,<br />
+                        Kukatpally Housing Board Colony,<br />
+                        Kukatpally, Hyderabad, Telangana 500072
                       </p>
                     </div>
                   </div>
@@ -196,8 +194,8 @@ const Connect = () => {
                     <div>
                       <h3 className="text-lg font-bold text-gray-800 mb-1">Call Us</h3>
                       <p className="text-gray-600">
-                        US: +1 (888) 123-4567<br />
-                        UK: +44 20 1234 5678
+                        +91 6302309409<br />
+                        +91 7799554849
                       </p>
                     </div>
                   </div>
@@ -222,7 +220,6 @@ const Connect = () => {
         <div className="container mx-auto px-4">
           <div className="bg-white rounded-lg shadow-md overflow-hidden">
             <div className="h-96 bg-gray-200">
-              {/* In a real application, you would embed a Google Map here */}
               <div className="w-full h-full flex items-center justify-center">
                 <p className="text-gray-600">Google Map would be embedded here</p>
               </div>
