@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Logo from './Logo';
 import { Button } from './ui/button';
 import { Menu, X } from 'lucide-react';
 
@@ -15,16 +14,11 @@ const Navbar = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center">
-            <Logo 
-              firstText="Endeavour" 
-              secondText="sciences" 
-              firstColor="#FF6B00" 
-              secondColor="#5DC400" 
-              fontSize={28} 
-              triangleColor="#FF6B00" 
-              fontFamily="Arial, sans-serif" 
-              triangleSize={50} 
-              showTriangle={true}
+            {/* Use the new image logo */}
+            <img 
+              src="/lovable-uploads/b98232b1-4294-4c6a-975d-9e0f92ad9cf2.png" 
+              alt="Endeavour Sciences Logo" 
+              className="h-10" // Adjust height as needed
             />
           </Link>
           
