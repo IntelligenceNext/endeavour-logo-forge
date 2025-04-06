@@ -63,7 +63,7 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom brand colors
+				// Endeavour Sciences Brand Colors
 				endeavour: {
 					orange: '#FF6B00',
 					green: '#5DC400',
