@@ -11,6 +11,12 @@ import WhyUs from "./pages/WhyUs";
 import Careers from "./pages/Careers";
 import Connect from "./pages/Connect";
 import NotFound from "./pages/NotFound";
+import ClientLogin from "./pages/ClientLogin";
+import EmployeeHRMS from "./pages/EmployeeHRMS";
+import RFP from "./pages/RFP";
+import FAQ from "./pages/FAQ";
+import Terms from "./pages/Terms";
+import Privacy from "./pages/Privacy";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +33,12 @@ const App = () => (
           <Route path="/why-us" element={<WhyUs />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/connect" element={<Connect />} />
+          <Route path="/client-login" element={<ClientLogin />} />
+          <Route path="/employee-hrms" element={<EmployeeHRMS />} />
+          <Route path="/rfp" element={<RFP />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from './ui/button';
 import Logo from './Logo';
-import { Mail, Phone, MapPin, Linkedin, Facebook, Twitter } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -32,14 +32,8 @@ const Footer = () => {
               advancement in the industry.
             </p>
             <div className="flex space-x-4 mt-6">
-              <a href="#" className="text-gray-600 hover:text-endeavour-orange">
+              <a href="https://www.linkedin.com/company/endeavour-sciences" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-endeavour-orange">
                 <Linkedin size={20} />
-              </a>
-              <a href="#" className="text-gray-600 hover:text-endeavour-orange">
-                <Facebook size={20} />
-              </a>
-              <a href="#" className="text-gray-600 hover:text-endeavour-orange">
-                <Twitter size={20} />
               </a>
             </div>
           </div>
@@ -77,15 +71,15 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <MapPin className="mr-2 mt-1 text-endeavour-orange flex-shrink-0" size={18} />
-                <span className="text-gray-600">Altimus Building, Ahmedabad, India, 380015</span>
+                <span className="text-gray-600">804, 8th Floor, Manjeera Trinity Corporate, Kukatpally Housing Board Colony, Kukatpally, Hyderabad, Telangana 500072</span>
               </li>
               <li className="flex items-center">
                 <Phone className="mr-2 text-endeavour-orange flex-shrink-0" size={18} />
-                <span className="text-gray-600">US: +1 (888) 123-4567</span>
+                <span className="text-gray-600">+91 6302309409</span>
               </li>
               <li className="flex items-center">
                 <Phone className="mr-2 text-endeavour-orange flex-shrink-0" size={18} />
-                <span className="text-gray-600">UK: +44 20 1234 5678</span>
+                <span className="text-gray-600">+91 7799554849</span>
               </li>
               <li className="flex items-center">
                 <Mail className="mr-2 text-endeavour-orange flex-shrink-0" size={18} />
