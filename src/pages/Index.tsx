@@ -8,27 +8,34 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Toaster } from '@/components/ui/sonner';
 import { toast } from 'sonner';
+import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarTrigger } from "@/components/ui/menubar";
 import Logo from '@/components/Logo';
 import ColorPicker from '@/components/ColorPicker';
 import FontSelector from '@/components/FontSelector';
 import RangeInput from '@/components/RangeInput';
-import { exportLogo } from '@/utils/exportLogo';
+import { exportLogo, exportLogoAsSVG } from '@/utils/exportLogo';
 
 const Index = () => {
-  // Logo state
+  // Logo state - updated to match Endeavour Sciences logo
   const [firstText, setFirstText] = useState('Endeavour');
   const [secondText, setSecondText] = useState('sciences');
-  const [firstColor, setFirstColor] = useState('#FF6B00');
-  const [secondColor, setSecondColor] = useState('#5DC400');
-  const [triangleColor, setTriangleColor] = useState('#FF6B00');
+  const [firstColor, setFirstColor] = useState('#FF6B00');  // Orange color
+  const [secondColor, setSecondColor] = useState('#5DC400');  // Green color
+  const [triangleColor, setTriangleColor] = useState('#FF6B00');  // Orange color
   const [fontSize, setFontSize] = useState(48);
   const [triangleSize, setTriangleSize] = useState(80);
   const [fontFamily, setFontFamily] = useState('Arial, sans-serif');
   const [backgroundColor, setBackgroundColor] = useState('#FFFFFF');
+  const [showTriangle, setShowTriangle] = useState(true);
 
   const handleExport = () => {
     exportLogo('logo-preview', `${firstText}${secondText}-logo`);
-    toast.success('Logo exported successfully!');
+    toast.success('Logo exported as PNG successfully!');
+  };
+
+  const handleExportSVG = () => {
+    exportLogoAsSVG('logo-preview', `${firstText}${secondText}-logo`);
+    toast.success('Logo exported as SVG successfully!');
   };
 
   const resetToDefault = () => {
@@ -41,6 +48,7 @@ const Index = () => {
     setTriangleSize(80);
     setFontFamily('Arial, sans-serif');
     setBackgroundColor('#FFFFFF');
+    setShowTriangle(true);
     toast.info('Settings reset to default');
   };
 
@@ -50,9 +58,27 @@ const Index = () => {
         <div className="container mx-auto py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-endeavour-orange rounded-full"></div>
+              <div className="w-8 h-8 bg-orange-500 rounded-full"></div>
               <h1 className="text-2xl font-bold">Endeavour Sciences Logo Forge</h1>
             </div>
+            <Menubar className="hidden md:flex">
+              <MenubarMenu>
+                <MenubarTrigger>File</MenubarTrigger>
+                <MenubarContent>
+                  <MenubarItem onClick={handleExport}>Export as PNG</MenubarItem>
+                  <MenubarItem onClick={handleExportSVG}>Export as SVG</MenubarItem>
+                  <MenubarItem onClick={resetToDefault}>Reset to Default</MenubarItem>
+                </MenubarContent>
+              </MenubarMenu>
+              <MenubarMenu>
+                <MenubarTrigger>Help</MenubarTrigger>
+                <MenubarContent>
+                  <MenubarItem onClick={() => toast.info('Endeavour Sciences Logo Forge v1.0')}>
+                    About
+                  </MenubarItem>
+                </MenubarContent>
+              </MenubarMenu>
+            </Menubar>
           </div>
         </div>
       </header>
@@ -76,12 +102,16 @@ const Index = () => {
                   triangleColor={triangleColor}
                   fontFamily={fontFamily}
                   triangleSize={triangleSize}
+                  showTriangle={showTriangle}
                 />
               </div>
             </CardContent>
-            <CardFooter className="flex justify-between">
+            <CardFooter className="flex flex-wrap gap-2 justify-between">
               <Button variant="outline" onClick={resetToDefault}>Reset</Button>
-              <Button onClick={handleExport}>Export Logo</Button>
+              <div className="flex gap-2">
+                <Button variant="outline" onClick={handleExportSVG}>Export SVG</Button>
+                <Button onClick={handleExport}>Export PNG</Button>
+              </div>
             </CardFooter>
           </Card>
 
@@ -136,6 +166,16 @@ const Index = () => {
                   value={backgroundColor}
                   onChange={setBackgroundColor}
                 />
+                <div className="flex items-center space-x-2 pt-2">
+                  <input
+                    type="checkbox"
+                    id="showTriangle"
+                    checked={showTriangle}
+                    onChange={(e) => setShowTriangle(e.target.checked)}
+                    className="h-4 w-4 rounded border-gray-300"
+                  />
+                  <Label htmlFor="showTriangle">Show Triangle</Label>
+                </div>
               </TabsContent>
               
               <TabsContent value="styling" className="space-y-4 p-4">
@@ -164,12 +204,13 @@ const Index = () => {
 
             <Card>
               <CardHeader>
-                <CardTitle>About</CardTitle>
+                <CardTitle>About Endeavour Sciences</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-gray-600">
-                  This logo forge allows you to create customized logos for Endeavour Sciences Private Limited. 
-                  Adjust the settings to create your perfect logo, then export it for use in your projects.
+                  Endeavour Sciences Private Limited offers digital marketing and social media solutions, 
+                  including SMM, SEO, campaign management, and lead generation. 
+                  The company also provides recruitment, staffing, and business consulting services.
                 </p>
               </CardContent>
             </Card>
