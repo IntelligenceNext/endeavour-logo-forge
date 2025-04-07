@@ -6,6 +6,21 @@
     Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept, Authorization"
 </IfModule>
 
+# File permissions
+<FilesMatch "\.php$">
+    # Secure PHP file permissions
+    <IfModule mod_authz_core.c>
+        Require all granted
+    </IfModule>
+</FilesMatch>
+
+# Directory permissions
+<Directory "/public_html">
+    Options -Indexes +FollowSymLinks
+    AllowOverride All
+    Require all granted
+</Directory>
+
 # Handle API routing
 RewriteEngine On
 RewriteRule ^api/auth/register$ src/api/auth/register.php [L]
