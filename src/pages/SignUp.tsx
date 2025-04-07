@@ -119,7 +119,11 @@ const SignUpPage = () => {
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </div>
-            <Button type="submit" className="w-full" disabled={isLoading}>
+            <Button 
+              type="submit" 
+              className="w-full bg-[#FF6B00] text-white hover:bg-[#E66000]" 
+              disabled={isLoading}
+            >
               {isLoading ? 'Creating Account...' : 'Sign Up'}
             </Button>
           </form>
