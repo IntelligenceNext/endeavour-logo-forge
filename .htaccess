@@ -1,0 +1,19 @@
+
+# Enable cross-origin requests
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, OPTIONS, PUT, DELETE"
+    Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+</IfModule>
+
+# Handle API routing
+RewriteEngine On
+RewriteRule ^api/auth/register$ src/api/auth/register.php [L]
+RewriteRule ^api/auth/login$ src/api/auth/login.php [L]
+
+# Handle React routing
+RewriteBase /
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
