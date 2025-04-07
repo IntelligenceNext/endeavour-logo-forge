@@ -21,14 +21,38 @@
     Require all granted
 </Directory>
 
-# Handle API routing
-RewriteEngine On
-RewriteRule ^api/auth/register$ src/api/auth/register.php [L]
-RewriteRule ^api/auth/login$ src/api/auth/login.php [L]
+# PHP configuration
+<IfModule mod_php.c>
+    php_flag display_errors off
+    php_value max_execution_time 300
+    php_value memory_limit 256M
+    php_value post_max_size 64M
+    php_value upload_max_filesize 64M
+</IfModule>
 
-# Handle React routing
-RewriteBase /
-RewriteRule ^index\.html$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.html [L]
+# Enable mod_rewrite
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Handle API routing
+    RewriteRule ^api/auth/register$ src/api/auth/register.php [L]
+    RewriteRule ^api/auth/login$ src/api/auth/login.php [L]
+    
+    # Handle React routing
+    RewriteBase /
+    RewriteRule ^index\.html$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.html [L]
+</IfModule>
+
+# Disable directory listing
+Options -Indexes
+
+# Set default character set
+AddDefaultCharset UTF-8
+
+# Specify MIME types
+AddType application/javascript .js
+AddType text/css .css
+AddType image/svg+xml .svg
