@@ -21,25 +21,30 @@ if (!isset($data->email) || !isset($data->password)) {
 $email = $conn->real_escape_string(trim($data->email));
 
 // Check if user exists
-$sql = "SELECT * FROM users WHERE email = '$email'";
+$sql = "SELECT * FROM users WHERE user_email = '$email'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     $user = $result->fetch_assoc();
     
     // Verify password
-    if (password_verify($data->password, $user['password'])) {
+    if (password_verify($data->password, $user['user_pass'])) {
         // Generate a simple token
         $token = bin2hex(random_bytes(32));
         
         // Remove password from user data
-        unset($user['password']);
+        unset($user['user_pass']);
         
         echo json_encode([
             "success" => true,
             "message" => "Login successful",
             "token" => $token,
-            "user" => $user
+            "user" => [
+                "id" => $user['ID'],
+                "name" => $user['display_name'],
+                "email" => $user['user_email'],
+                "username" => $user['user_login']
+            ]
         ]);
     } else {
         echo json_encode(["success" => false, "message" => "Invalid password"]);
