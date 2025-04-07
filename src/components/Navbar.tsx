@@ -43,6 +43,16 @@ const Navbar = () => {
               CONNECT
             </Link>
           </nav>
+
+          {/* Login/Signup Buttons - Desktop */}
+          <div className="hidden md:flex items-center space-x-4">
+            <Link to="/login">
+              <Button variant="outline">Login</Button>
+            </Link>
+            <Link to="/signup">
+              <Button>Sign Up</Button>
+            </Link>
+          </div>
           
           {/* Mobile Menu Button */}
           <div className="md:hidden">
@@ -72,6 +82,13 @@ const Navbar = () => {
             </Link>
             <Link to="/connect" className="text-gray-800 font-medium hover:text-endeavour-orange transition-colors">
               CONNECT
+            </Link>
+            {/* Login/Signup Links - Mobile */}
+            <Link to="/login" className="text-gray-800 font-medium hover:text-endeavour-orange transition-colors">
+              LOGIN
+            </Link>
+            <Link to="/signup" className="text-gray-800 font-medium hover:text-endeavour-orange transition-colors">
+              SIGN UP
             </Link>
           </nav>
         )}

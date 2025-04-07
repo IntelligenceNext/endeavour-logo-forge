@@ -17,6 +17,8 @@ import RFP from "./pages/RFP";
 import FAQ from "./pages/FAQ";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
+import LoginPage from "./pages/Login"; // Import Login page
+import SignUpPage from "./pages/SignUp"; // Import Sign Up page
 
 const queryClient = new QueryClient();
 
@@ -39,6 +41,8 @@ const App = () => (
           <Route path="/faq" element={<FAQ />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/login" element={<LoginPage />} /> {/* Add Login route */}
+          <Route path="/signup" element={<SignUpPage />} /> {/* Add Sign Up route */}
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
