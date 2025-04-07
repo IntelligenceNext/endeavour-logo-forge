@@ -15,7 +15,7 @@ const Solutions = () => {
       {/* Hero Section */}
       <HeroSection 
         title="The Solutions, Services, and Strategies" 
-        subtitle="Explore our mindful strategies and results-driven solutions."
+        subtitle="Human Resource Solutions That Drive Business Success"
       />
       
       {/* Digital Marketing Services */}

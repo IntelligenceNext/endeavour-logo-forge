@@ -50,7 +50,7 @@ const Home = () => {
       {/* Hero Section */}
       <HeroSection 
         title="Digital Marketing & Social Media Solutions" 
-        subtitle="SMM. SEO. Campaign Management. Lead Generation."
+        subtitle="Human Resource Solutions That Drive Business Success"
         buttonText="LEARN MORE"
         buttonLink="/solutions"
       />
