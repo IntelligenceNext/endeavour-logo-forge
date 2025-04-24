@@ -38,12 +38,12 @@
     RewriteRule ^api/auth/register$ src/api/auth/register.php [L]
     RewriteRule ^api/auth/login$ src/api/auth/login.php [L]
     
-    # Handle React routing - critical for SPA functionality
+    # Handle React routing for SPA - critical part for fixing white screen
     RewriteBase /
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-l
-    RewriteRule ^.*$ index.html [L,QSA]
+    RewriteRule ^.*$ index.html [L]
 </IfModule>
 
 # Disable directory listing
