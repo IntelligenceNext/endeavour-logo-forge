@@ -38,12 +38,12 @@
     RewriteRule ^api/auth/register$ src/api/auth/register.php [L]
     RewriteRule ^api/auth/login$ src/api/auth/login.php [L]
     
-    # Handle React routing
+    # Handle React routing - critical for SPA functionality
     RewriteBase /
-    RewriteRule ^index\.html$ - [L]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule . /index.html [L]
+    RewriteCond %{REQUEST_FILENAME} !-l
+    RewriteRule ^.*$ index.html [L,QSA]
 </IfModule>
 
 # Disable directory listing
@@ -56,3 +56,11 @@ AddDefaultCharset UTF-8
 AddType application/javascript .js
 AddType text/css .css
 AddType image/svg+xml .svg
+
+# Set proper MIME types for modern web assets
+<IfModule mod_mime.c>
+    AddType application/font-woff .woff
+    AddType application/font-woff2 .woff2
+    AddType application/json .json
+    AddType text/javascript .js .mjs
+</IfModule>
